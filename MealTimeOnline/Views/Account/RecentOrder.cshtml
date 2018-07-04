@@ -1,0 +1,65 @@
+﻿@using MealTimeOnline.ViewModels.Account
+@using MealTimeOnline.Models.Consumer
+@using MealTimeOnline.Models.Commodity
+@model OrderViewModel
+@{ViewBag.Title = "RecentOrder";}
+
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curOder = db.Orders.Where(c => c.UserId == id);
+    }
+    <div class="right-side left">
+        <div class="global-panel-big-title">最近订单</div>
+        @if (curOder.Count() > 0)
+        {
+            <table class="table">
+                <tbody>
+                    @foreach (var order in curOder)
+                    {
+                        <tr>
+                            <td><img src="@Url.Action("Placeholder", "Image", new {width = 70, height = 70, text = order.Canteen.CanteenName})" /></td>
+                            <td style="position: relative">
+                                @order.Canteen.CanteenName
+                                <ul style="position: absolute; top: 40px; left: -30px; font-size: 12px">
+                                    @{ var itemCnt = 0; }
+                                    @foreach (var item in order.OrderItems)
+                                    {
+                                        if (itemCnt != 0)
+                                        { @(" , ") }
+                                        @item.Food.FoodName
+                                        if (++itemCnt == 3)
+                                        {
+                                            @("等")
+                                            if (order.OrderItems.Count > 3) { break; }
+                                        }
+                                    }
+                                </ul>
+                                <span class="small" style="position: absolute; top: 62px; left: 10px">共 <span class="text-danger">@order.OrderItems.Count</span> 份商品</span>
+                            </td>
+                            <td><span class="small" style="position: relative; top: 22px">@order.OrderTime</span></td>
+                            <td>
+                                <h3 class="pull-right text-danger">
+                                    <span class="small"><i class="fa fa-rmb text-danger"></i></span>@order.SumPrice
+                                </h3>
+                            </td>
+                            <td>
+                                <span class="text-center" style="position: relative; top: 22px">
+                                    @order.OrderStatus
+                                </span>
+                            </td>
+                        </tr>
+                                        }
+                </tbody>
+            </table>
+            }
+            else
+            {
+                <div style="margin-top:30px;">
+                    <img src="@Url.Action("Placeholder", "Image", new {width = 850, height = 300, text = "目前暂时没有订单"})" />
+                </div>
+            }
+    </div>
+</div>

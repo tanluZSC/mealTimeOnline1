@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MealTimeOnline.Models.Consumer.RedPacket>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PageTitle = "Index";
+}
+
+<div>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New <i class="fa fa-plus-square"></i></a>
+</div>
+<table class="table table-striped table-hover table-bordered" id="bs-admin-red-packet">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Money)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{ int cnt = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(++cnt)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Money)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RedPacketId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RedPacketId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RedPacketId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Styles {
+    @Styles.Render("~/Content/DataTables")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTables")
+    <script>
+        $('#bs-admin-red-packet').dataTable({
+            "columns": [
+                { "orderable": false, "searchable": false },
+                { "data": "Username" },
+                { "data": "limit" },
+                { "data": "money" },
+                { "orderable": false, "searchable": false }
+            ],
+            "order": [
+                [ 1, "asc" ]
+            ]
+        });
+    </script>
+}

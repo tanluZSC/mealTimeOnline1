@@ -1,0 +1,31 @@
+﻿@using MealTimeOnline.Models.Consumer
+@{ViewBag.Title = "Info";}
+
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curUser = db.Users.Single(c => c.Id == id);
+        var curAddresses = db.Addresses.Where(c => c.UserId == id);
+    }
+
+    <div class="right-side left">
+        <div class="global-panel-big-title">个人资料</div>
+        <div class="simple-Personal">
+            <a href="" class="portrait"><img src="@Url.Action("Placeholder", "Image", new { width="100", height="100",text=curUser.Username })" alt=""></a>
+            <div class="left">
+                <p>用户名：@curUser.Username</p>
+                <p>性别：@if (curUser.Sex == 0)
+                {@("女")}
+                else {@("男")}</p>
+                <p>联系电话：@curUser.PhoneNumber</p>
+                <p>邮箱：@curUser.Email</p>
+                <p>账户余额：@curUser.Money</p>
+                <p id="fucktheaddress">地址：@if (curUser.School == null || curUser.RoomNum == null)
+                {@("{{fuck}}")}
+                else {@(@curUser.School + curUser.RoomNum)}</p>
+            </div>
+        </div>
+    </div>
+</div>

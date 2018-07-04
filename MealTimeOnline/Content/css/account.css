@@ -1,0 +1,276 @@
+﻿/*
+    fa etc.
+*/
+h4{
+    margin:0;
+    padding:0;
+    color:#fff;
+    line-height:30px;
+}
+a{
+    text-decoration:none !important;
+}
+.fa-newstyle{
+    color:#fff !important;
+    font-size:14px;
+}
+.panel-title .fa{
+    margin-right:14px;
+}
+.modal-title .fa{
+    margin-right:14px;
+}
+
+.greet a{
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    margin-left: 16px;
+    background-color: #5cb85c;
+    color: #fff;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.greet .fa-mobile-phone{
+    font-size:24px;
+    vertical-align: -4px;
+}
+/*
+    account
+*/
+.content{
+    margin-top:30px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.container .right-side {
+    width: 894px;
+    margin-top: 40px;
+    padding:20px;
+}
+
+.greet {
+    float: left;
+    width: 240px;
+}
+
+.global-panel-big-title {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 24px;
+  color: #333;
+  line-height: 32px;
+}
+
+.left-side {
+    width: 240px;
+    margin-top: 40px;
+}
+
+.left-side span {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.title-color {
+    color: #5cb85c !important;
+    font-size: 24px;
+}
+
+.left-side > ul > li + li {
+    margin-top: 25px;
+}
+
+.sm-left-side > li {
+    padding-top: 10px;
+}
+
+.simple-Personal {
+    height: 135px;
+    padding: 20px 22px;
+    position: relative;
+}
+.simple-look{
+    float:left;
+    width:150px;
+    padding-top:20px;
+}
+.spt {
+    width: 1px;
+    height: 105px;
+    top: 20px;
+    float:left;
+    background-color: #e1e1e1;
+    display: block;
+}
+
+.portrait {
+    display: block;
+    margin-right: 10px;
+    float: left;
+}
+
+.infoimg {
+    width: 98px;
+    height: 98px;
+}
+tr > td > a,
+tr > td > a:hover,
+tr > td > a:visited,
+tr > td > a:link,
+ul > li > a,
+ul > li > a:hover,
+ul > li > a:visited,
+ul > li > a:link {
+    color: #000;
+    text-decoration: none;
+}
+
+/**
+    Address
+*/
+.addressInfo{
+    width:240px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    vertical-align: middle;
+    touch-action: manipulation;
+    background-color: #fff;
+    border: 1px solid #999;
+    white-space: nowrap;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    margin:20px;
+}
+.addressInfo > ul > li{
+    display: list-item;
+    margin-left:-20px;
+}
+.addressInfo > ul > li:nth-child(1){
+    margin-bottom:28px;
+}
+.addressInfo-add tr td{
+    border: 1px solid transparent !important;
+}
+.addressInfo-add td:nth-child(2){
+    width:130px !important;
+}
+.addressInfo-add td:nth-child(3){
+    width:220px !important;
+}
+/*
+    Security
+*/
+.right-side table {
+    margin-left:20px;
+    border-collapse:collapse
+}
+.right-side table tr {
+  height: 80px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.right-side td {
+  height: 80px;
+  font-size: 16px;
+  color: #666;
+}
+.right-side td:nth-child(1) {
+  width: 200px;
+  color: #000;
+  padding-left: 30px;
+}
+.right-side td:nth-child(2) {
+  width: 280px;
+}
+.right-side td:nth-child(3) {
+  width: 160px;
+}
+.right-side td:nth-child(4) {
+  width: 110px;
+}
+.right-side td:nth-child(5) {
+  text-align: right;
+  padding-right: 10px;
+}
+.right-side td:nth-child(5) a {
+  color: #218ce5;
+}
+.right-side .bound,
+.right-side .set {
+  color: #63b97c;
+}
+
+.panel-content{
+    border: 1px solid #f3f3f3;
+    background-color:#fafafa; 
+    width:100%; 
+    height:80px; 
+    margin-top:15px; 
+    display:inline-block;
+}
+/*
+    Evaluated
+*/
+
+.rstinfo{
+    display:table-cell;
+    margin-left:30px;
+    padding-top:15px;
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+.rstinfo img{
+    width:50px;
+    height:50px;
+}
+.orderinfo-time{
+    display: table-cell;
+    color: #999;
+    vertical-align: middle;
+}
+.orderinfo-comment{
+    margin-top:38px;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size:24px;
+  margin-left:10px;
+  vertical-align:middle;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating span.fa-star:before {
+    content: "\f006";
+    padding-right: 5px;
+    color: #777777;
+}
+.rating span.fa-star:hover:before,
+.rating span.fa-star:hover ~ span.fa-star:before {
+    content: "\f005";
+    color: #e3cf7a;
+}
+/**
+    AccountBalance
+*/
+.balance-summary {
+    margin: 12px 0 24px;
+    padding: 19px;
+}

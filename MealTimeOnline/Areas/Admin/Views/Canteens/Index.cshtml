@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MealTimeOnline.Models.Dealer.Canteen>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PageTitle = "Canteen List";
+}
+
+<table class="table table-striped table-hover table-bordered" id="bs-admin-canteen">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CanteenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CanteenCategory.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EvaluateNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Index", "Foods", new {cid = item.CanteenId})">@Html.DisplayFor(modelItem => item.CanteenName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CanteenCategory.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EvaluateNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellNum)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CanteenId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CanteenId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CanteenId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Styles {
+    @Styles.Render("~/Content/DataTables")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTables")
+    <script>
+        $('#bs-admin-canteen').dataTable();
+    </script>
+}

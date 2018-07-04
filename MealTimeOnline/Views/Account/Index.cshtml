@@ -1,0 +1,81 @@
+﻿@using MealTimeOnline.Models.Consumer
+@{
+    ViewBag.Title = "Home";
+}
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout");}
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curUser = db.Users.Single(c => c.Id == id);
+    }
+    <div class="right-side left">
+        <div class="simple-Personal">
+            <a href="" class="portrait"><img src="@Url.Action("Placeholder", "Image", new { width="100", height="100",text=curUser.Username })" alt=""></a>
+            <div class="greet">
+                <p>Hello,<span>@curUser.Username</span>!</p>
+                <p>是不是饿的睡不着呀？吃个夜宵呗！</p>
+                <a href="#" class="active"><i class="fa fa-envelope fa-newstyle" aria-hidden="true"></i></a>
+                <a href="#" class="active"><i class="fa fa-mobile-phone fa-newstyle" aria-hidden="true"></i></a>
+            </div>
+            <div class="spt"><span></span></div>
+            <div class="simple-look text-center"><a href="#"><p>我的红包</p><p>@curUser.RedPackets.Count </p></a></div>
+            <div class="spt"><span></span></div>
+            <div class="simple-look text-center"><a href="#"><p>我的积分</p><p>@curUser.Credits points</p></a></div>
+            <div class="spt"><span></span></div>
+            <div class="simple-look text-center"><a href="#"><p>账户余额</p><p>@curUser.Money RMB</p></a></div>
+        </div>
+        <div>
+            <div>最近订单</div>
+            <table class="table">
+                @if (curUser.Orders.Count() > 0)
+                {
+                    <tbody>
+                        @foreach (var order in curUser.Orders)
+                        {
+                            <tr>
+                                <td><img src="@Url.Action("Placeholder", "Image", new {width = 70, height = 70, text = order.Canteen.CanteenName})" /></td>
+                                <td style="position: relative">
+                                    @order.Canteen.CanteenName
+                                    <ul style="position: absolute; top: 40px; left: -30px; font-size: 12px">
+                                        @{ var itemCnt = 0; }
+                                        @foreach (var item in order.OrderItems)
+                                        {
+                                            if (itemCnt != 0)
+                                            { @(" , ") }
+                                            @item.Food.FoodName
+                                            if (++itemCnt == 3)
+                                            {
+                                                @("等")
+                                                if (order.OrderItems.Count > 3) { break; }
+                                            }
+                                        }
+                                    </ul>
+                                    <span class="small" style="position: absolute; top: 62px; left: 10px">共 <span class="text-danger">@order.OrderItems.Count</span> 份商品</span>
+                                </td>
+                                <td><span class="small" style="position: relative; top: 22px">@order.OrderTime</span></td>
+                                <td>
+                                    <h3 class="pull-right text-danger">
+                                        <span class="small"><i class="fa fa-rmb text-danger"></i></span>@order.SumPrice
+                                    </h3>
+                                </td>
+                                <td>
+                                    <span class="text-center" style="position: relative; top: 22px">
+                                        @order.OrderStatus
+                                    </span>
+                                </td>
+                            </tr>
+                                            }
+                    </tbody>
+                                            }
+                                            else
+                                            {
+                                                <div style="margin-top:30px;">
+                                                    <img src="@Url.Action("Placeholder", "Image", new {width = 850, height = 300, text = "目前暂时没有订单"})" />
+                                                </div>
+                                            }
+
+            </table>
+        </div>
+    </div>
+</div>

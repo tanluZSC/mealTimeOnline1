@@ -1,0 +1,46 @@
+﻿<!-- Power By LiuACG - Sidebar -->
+<ul class="nav nav-pills nav-stacked custom-nav">
+    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>仪表盘</span></a></li>
+    
+    <li class="menu-list">
+        <a href=""><i class="fa fa-users"></i> <span>用户</span></a>
+        <ul class="sub-menu-list">
+            <li><a href="@Url.Action("Index", "Users")"> 用户列表</a></li>
+            <li><a href="@Url.Action("Create", "Users")"> 添加用户</a></li>
+        </ul>
+    </li>
+    
+    <li class="menu-list">
+        <a href=""><i class="fa fa-user-secret"></i> <span>角色管理</span></a>
+        <ul class="sub-menu-list">
+            <li><a href="@Url.Action("Index", "Roles")"> 角色列表</a></li>
+            <li><a href="@Url.Action("Create", "Roles")"> 添加角色</a></li>
+        </ul>
+    </li>
+
+    <li class="menu-list">
+        <a href=""><i class="fa fa-cutlery"></i> <span>餐厅管理</span></a>
+        <ul class="sub-menu-list">
+            <li><a href="@Url.Action("Index", "Canteens")"> 餐厅列表</a></li>
+            <li><a href="@Url.Action("Create", "Canteens")"> 添加餐厅</a></li>
+            <li><a href="@Url.Action("Index", "EnterRegisters")"> 入驻申请</a></li>
+        </ul>
+    </li>
+    
+    <li class="menu-list">
+        <a href=""><i class="fa fa-book"></i> <span>分类</span></a>
+        <ul class="sub-menu-list">
+            <li><a href="@Url.Action("Index", "CanteenCategories")"> 餐厅分类</a></li>
+            <li><a href="@Url.Action("Index", "FoodCategories")"> 食物分类</a></li>
+            <li><a href="@Url.Action("Index", "PeopleCategories")"> 人群分类</a></li>
+        </ul>
+    </li>
+    
+    <li>
+        <a href="@Url.Action("Index", "Payments")"><i class="fa fa-money"></i> <span>支付方式</span></a>
+    </li>
+
+    <li><a href="@Url.Action("Index", "RedPackets")"><i class="fa fa-rmb"></i> <span>红包管理</span></a></li>
+
+    <li><a href="#"><i class="fa fa-wrench"></i> <span>系统管理</span></a></li>
+</ul>

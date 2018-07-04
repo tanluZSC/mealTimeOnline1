@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MealTimeOnline.Models.Commodity.Food>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PageTitle = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-hover table-bordered" id="bs-admin-foods">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </th>
+        <th>
+            菜品分类
+        </th>
+        <th>
+            适合人群
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FoodId)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodCategory.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PeopleCategory.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.FoodId}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.FoodId}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.FoodId})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Styles {
+    @Styles.Render("~/Content/DataTables")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTables")
+    <script>
+        $('#bs-admin-foods').dataTable();
+    </script>
+}

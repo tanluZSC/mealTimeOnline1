@@ -1,0 +1,86 @@
+﻿@using MealTimeOnline.ViewModels.Order
+@using MealTimeOnline.Models.Dealer
+@using MealTimeOnline.Models.Commodity
+@model CanteenViewModel
+
+@{ViewBag.Title = "Canteen";}
+
+<div class="container clearfix">
+
+    <div class="navbar-left navbar-form">
+        <span>当前饭堂：</span>
+        <span id="canteenName"></span>
+    </div>
+
+    <div class="container-fluid">
+        <div class="wrapper">
+            <img src="@Url.Action("Placeholder", "Image", new { width = 1110, height = 100, text = "广告位长期招收" })" />
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="Business-sorts">
+            <span>食堂分类：</span>
+            <ul>
+                @for (int i = 0; i < Model.canteen.Count; ++i)
+                {
+                    <li><a class="@if(i==0) {@("current")}" href="#" onclick="showSelected(); showTab('rstbox', @(i));" data-canteenName="@Model.canteen[i].CanteenName" data-canteenId="@Model.canteen[i].CanteenId">@Model.canteen[i].CanteenName</a></li>
+                }
+            </ul>
+        </div>
+
+        <div class="row">
+            @for (int j = 0; j < Model.canteen.Count; j++)
+            {
+                <div class="rstbox @if(j == 0) {@("rstbox-current")}">
+                    @for (int k = 0; k < Model.canteen[j].Foods.Count; k++)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="food-box">
+                                <img src="@Url.Action("Placeholder", "Image", new { width = 80, height = 80, text = Model.canteen[j].Foods[k].FoodName })" alt="food_01">
+                                <div class="food-info">
+                                    <a href="#" class="food-name">@Model.canteen[j].Foods[k].FoodName</a>
+                                    <span class="food-star">
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+                                    </span>
+                                    <span class="food-sale">月售xxxx单</span>
+                                    <span class="food-cost"><i class="fa fa-rmb"></i> @Model.canteen[j].Foods[k].Price</span>
+                                    <div class="food-cnt" data-food="@Model.canteen[j].Foods[k].FoodId" data-food-cnt="0" data-food-price="@Model.canteen[j].Foods[k].Price" data-food-name="@Model.canteen[j].Foods[k].FoodName">
+                                        <div class="food-add-cart"><span>加入购物车</span></div>
+                                        <div class="food-cart-cnt" hidden>
+                                            <span class="pull-left">－</span>
+                                            <input class="food-cart-num" title="" disabled value="1" />
+                                            <span class="pull-right">＋</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*use js to control it*@
+
+<div class="cart">
+    <div id="cart-basket" class="cart-basket" style="top:-40px">
+        <div class="cart-clear">
+            购物车
+            <a href="#" onclick="cartclear('footercheck')">[清空]</a>
+        </div>
+        <div id="basic"></div>
+    </div>
+    <div class="cart-footer">
+        <span><i class="fa fa-shopping-cart fa-2x" style="color:#fff;padding:10px"></i> <i class="fa fa-rmb fa-lg text-warning"></i></span>
+        <span id="showprices" class="text-warning"></span>
+        <form action="/Order/Checkout" method="post">
+            <button type="submit" id="footercheck" class="cart-footer-check"><i class="fa fa-check"></i></button>
+        </form>
+    </div>
+</div>
+@section scripts {
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/npm.js"></script>
+}

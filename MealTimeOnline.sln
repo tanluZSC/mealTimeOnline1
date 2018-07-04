@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MealTimeOnline", "MealTimeOnline\MealTimeOnline.csproj", "{EA42711F-D48A-4701-A9BB-456C1243847D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MealTimeOnline.Tests", "MealTimeOnline.Tests\MealTimeOnline.Tests.csproj", "{8042B2B6-928D-4D27-A60B-ED3DA297007E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA42711F-D48A-4701-A9BB-456C1243847D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA42711F-D48A-4701-A9BB-456C1243847D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA42711F-D48A-4701-A9BB-456C1243847D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA42711F-D48A-4701-A9BB-456C1243847D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8042B2B6-928D-4D27-A60B-ED3DA297007E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8042B2B6-928D-4D27-A60B-ED3DA297007E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8042B2B6-928D-4D27-A60B-ED3DA297007E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8042B2B6-928D-4D27-A60B-ED3DA297007E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

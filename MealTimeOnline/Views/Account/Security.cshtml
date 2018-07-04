@@ -1,0 +1,47 @@
+﻿
+@{ViewBag.Title = "Security";}
+
+<section class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curUser = db.Users.Single(c => c.Id == id);
+    }
+
+    <div class="right-side left">
+        <div class="global-panel-big-title">安全中心</div>
+        <div class="content">
+            <table class="clearfix">
+                <tr>
+                    <td>实名认证</td>
+                    <td>完成实名认证</td>
+                    <td>--</td>
+                    <td>未认证</td>
+                    <td><a href="">立即认证</a></td>
+                </tr>
+                <tr>
+                    <td>绑定手机</td>
+                    <td>完成手机认证</td>
+                    <td>@curUser.PhoneNumber</td>
+                    <td class="bound">已绑定</td>
+                    <td><a href="">修改</a></td>
+                </tr>
+                <tr>
+                    <td>登录密码</td>
+                    <td>保障账户安全</td>
+                    <td>--</td>
+                    <td class="set">已设置</td>
+                    <td><a href="@Url.Action("Modifypassword", "Account")">修改</a></td>
+                </tr>
+                <tr>
+                    <td>支付密码</td>
+                    <td>保障用户资产安全</td>
+                    <td>--</td>
+                    <td>未设置</td>
+                    <td><a href="">立即设置</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>

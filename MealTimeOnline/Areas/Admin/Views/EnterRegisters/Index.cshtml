@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MealTimeOnline.Models.Dealer.EnterRegister>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PageTitle = "Enter Register";
+}
+
+<table class="table table-striped table-hover table-bordered" id="bs-admin-enter">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{ int cnt = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(++cnt)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section Styles {
+    @Styles.Render("~/Content/DataTables")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTables")
+    <script>
+        $('#bs-admin-enter').dataTable({
+            "columns": [
+                { "orderable": false, "searchable": false },
+                { "data": "Username" },
+                { "data": "RegisterDate" },
+                { "data": "State" },
+                { "orderable": false, "searchable": false },
+            ],
+            "order": [
+                [1, "asc"]
+            ]
+        });
+    </script>
+}

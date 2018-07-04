@@ -1,0 +1,53 @@
+﻿
+@{ViewBag.Title = "Evaluated";}
+
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    <div class="right-side left">
+        <div class="global-panel-big-title">评价</div>
+        <div style="background-color:#f7f7f7; width:100%; height:80px; margin-top:15px; display:table">
+            <div class="rstinfo">
+
+                @*Need to change*@
+
+                <a href="" class="portrait"><img src="#" alt=""></a>
+                <div>
+                    <h4><a href="#">咖比堡</a></h4>
+                    <p><span>鸡米花1份 / 上校鸡块-4块1份共2个菜品</span></p>
+                </div>
+            </div>
+            <span class="orderinfo-time">下单时间：</span>
+        </div>
+        <div class="orderinfo-comment">
+
+            <div class="form-group">
+                <div class="">
+                    <span><span style="color:red;">*</span>商家服务</span>
+                    <span class="rating">
+                        <span class="fa-star fa"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="">
+                    <span style="color:red">*</span>送餐速度
+                </div>
+            </div>
+
+            <div class="form-group clearfix" style="display:table">
+                <div style="display:table-cell; vertical-align:top">
+                    <span>&#8197;</span>
+                    评价菜品
+                </div>
+                <textarea style="display:table-cell;margin-left:5px;width:300px" class="left form-control" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4 col-sm-offset-1">
+                    <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fa fa-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

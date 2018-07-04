@@ -1,0 +1,40 @@
+﻿
+@{ViewBag.Title = "RedPacket";}
+
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curRedps = db.RedPackets.Where(c => c.UserId == id);
+    }
+    <div class="right-side left">
+        <div class="global-panel-big-title">我的红包</div>
+        <div class="">
+            @if (curRedps.Count() > 0)
+            {
+                <table class="table">
+                    <tbody>
+                        @foreach (var item in curRedps)
+                        {
+                            <tr>
+                                <td class="pull-left" style="position: relative">
+                                    <h3 class="text-danger">
+                                        <span class="small"><i class="fa fa-rmb text-danger"></i></span>@item.Money 元
+                                    </h3>
+                                </td>
+                                <td class="pull-right col-md-5"><span class="small" style="position: relative; top: 22px">有效时间到 @item.Deadline</span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div style="margin-top:30px;">
+                    <img src="@Url.Action("Placeholder", "Image", new {width = 850, height = 300, text = "目前你还没有领取到红包"})" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

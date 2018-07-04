@@ -1,0 +1,25 @@
+﻿@using MealTimeOnline.Models.Consumer;
+@{ViewBag.Title = "AccountBalance";}
+
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curUser = db.Users.Single(c => c.Id == id);
+    }
+    <div class="right-side left">
+        <div class="global-panel-big-title">账户余额</div>
+        <div class="panel-content">
+            <div class="balance-summary">
+
+                @*Need to change*@
+                <div class="tex">
+                    <span>现有余额: </span>
+                    <b>@curUser.Money</b>
+                    元
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

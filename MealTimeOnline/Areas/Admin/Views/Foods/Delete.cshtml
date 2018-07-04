@@ -1,0 +1,93 @@
+﻿@model MealTimeOnline.Models.Commodity.Food
+
+@{
+    ViewBag.Title = "Delete";
+    ViewBag.PageTitle = "Delete";
+}
+
+<div class="alert alert-danger">Are you sure you want to delete this?</div>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodName)
+        </dd>
+
+        <dt>
+            所属餐厅
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Canteen.CanteenName)
+        </dd>
+
+        <dt>
+            菜品分类
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodCategory.Value)
+        </dd>
+
+        <dt>
+            适合人群
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeopleCategory.Value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodElement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodElement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodNutrition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodNutrition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Images)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Images)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

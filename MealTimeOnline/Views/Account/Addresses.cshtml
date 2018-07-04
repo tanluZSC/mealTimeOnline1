@@ -1,0 +1,68 @@
+﻿@model MealTimeOnline.ViewModels.Account.AdderssesViewModel
+@using MealTimeOnline.Models.Consumer
+@{ViewBag.Title = "Addresses";}
+<div class="container clearfix">
+    @{Html.RenderPartial("_accountLayout"); }
+    @{
+        var db = new MealTimeOnline.DataAccessLayer.MtoDataContext();
+        var id = int.Parse(HttpContext.Current.User.Identity.Name);
+        var curUser = db.Users.Single(c => c.Id == id);
+        var curAddresses = db.Addresses.Where(c => c.UserId == id);
+    }
+
+    <div class="right-side left">
+        <div class="global-panel-big-title">收货地址</div>
+        <div id="needtoadd">
+            @if (curAddresses.Count() > 0)
+            {
+                foreach (var item in curAddresses)
+                {
+                    <div class="addressInfo">
+                        <ul>
+                            <li>@curUser.Username</li>
+                            <li>@item.AddressInfo</li>
+                            <li>@curUser.PhoneNumber</li>
+                        </ul>
+                    </div>
+                }
+            }
+            <button type="button" class="mybtn mybtnSelectAddress" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-2x fa-plus" style="padding:10px"></i>添加新地址</button>
+            @*模态框*@
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <h3 style="margin-left:50px">添加新地址</h3>
+                            <table class="addressInfo-add">
+                                <tr>
+                                    <td></td>
+                                    <td>位置：</td>
+                                    <td>
+                                        @Html.EditorFor(model => model.rIndex, new { htmlAttributes = new { @class = "form-control", @placeholder = "请输入你的学校" } })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>详细地址：</td>
+                                    <td>
+                                        @Html.EditorFor(model => model.rLongIndex, new { htmlAttributes = new { @class = "form-control", @placeholder = "请输入你的具体宿舍" } })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="提交" class="mybtn mybtnaccept btn-block" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
